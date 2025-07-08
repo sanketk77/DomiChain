@@ -1,21 +1,29 @@
-function PropertyCard({ name, city, price, imageUrl, onClick }) {
+// src/components/PropertyCard.jsx
+
+import { Link } from "react-router-dom";
+
+export default function PropertyCard({ property, id }) {
+  const truncateAddress = (address) =>
+    `${address.slice(0, 6)}...${address.slice(-4)}`;
+
   return (
-    <div
-      onClick={onClick}
-      className="bg-white rounded-lg shadow-md overflow-hidden mb-6 hover:shadow-lg transition duration-300 cursor-pointer"
-    >
-      <img
-        src={imageUrl || "https://source.unsplash.com/featured/?house"}
-        alt="Property"
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="text-xl font-bold text-gray-800 mb-1">{name}</h3>
-        <p className="text-gray-600 mb-1">📍 {city}</p>
-        <p className="text-green-600 font-semibold text-lg">{price}</p>
+    <Link to={`/property/${id}`}>
+      <div className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+        <img
+          src={property.image || "https://via.placeholder.com/400x250?text=Property"}
+          alt={property.name}
+          className="w-full h-48 object-cover"
+        />
+
+        <div className="p-4">
+          <h2 className="text-xl font-semibold text-indigo-700">{property.name}</h2>
+          <p className="text-sm text-gray-600">{property.city}</p>
+          <p className="mt-2 text-lg font-bold text-green-700">₹ {property.price}</p>
+          <p className="text-xs text-gray-400 mt-1">
+            Owner: {truncateAddress(property.owner)}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
-
-export default PropertyCard;

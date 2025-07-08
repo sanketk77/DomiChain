@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+// src/components/Navbar.jsx
 
-const Navbar = () => {
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+export default function Navbar() {
   const [account, setAccount] = useState("");
+  const location = useLocation();
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -15,7 +19,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const checkConnection = async () => {
+    const checkWallet = async () => {
       if (window.ethereum) {
         const accounts = await window.ethereum.request({
           method: "eth_accounts",
@@ -23,33 +27,40 @@ const Navbar = () => {
         if (accounts.length > 0) setAccount(accounts[0]);
       }
     };
-    checkConnection();
+    checkWallet();
   }, []);
 
+  const isActive = (path) =>
+    location.pathname === path ? "text-indigo-600 font-semibold" : "text-gray-700";
+
   return (
-    <nav className="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-50">
-      <h1 className="text-2xl font-bold text-blue-700">🏠 DomiChain</h1>
+    <nav className="sticky top-0 z-50 bg-white shadow-md px-6 py-4 w-full flex justify-between items-center">
 
-      <ul className="flex space-x-6 text-gray-700 font-medium">
-        <li className="hover:text-blue-600 cursor-pointer">Buy</li>
-        <li className="hover:text-blue-600 cursor-pointer">Rent</li>
-        <li className="hover:text-blue-600 cursor-pointer">Sell</li>
-      </ul>
+      <Link to="/" className="text-2xl font-bold text-indigo-700 tracking-tight">
+        🏠 DomiChain
+      </Link>
 
-      {account ? (
-        <div className="bg-green-100 text-green-800 px-4 py-2 rounded font-semibold">
-          Connected: {account.slice(0, 6)}...{account.slice(-4)}
-        </div>
-      ) : (
-        <button
-          onClick={connectWallet}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          Connect Wallet
-        </button>
-      )}
+      <div className="flex space-x-6 items-center">
+        <Link to="/" className={`${isActive("/")} hover:text-indigo-600 transition`}>
+          Home
+        </Link>
+        <Link to="/add-property" className={`${isActive("/add-property")} hover:text-indigo-600 transition`}>
+          Add Property
+        </Link>
+
+        {account ? (
+          <span className="bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium">
+            {account.slice(0, 6)}...{account.slice(-4)}
+          </span>
+        ) : (
+          <button
+            onClick={connectWallet}
+            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm font-medium"
+          >
+            Connect Wallet
+          </button>
+        )}
+      </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
