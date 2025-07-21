@@ -1,0 +1,24 @@
+{
+  "name": "realestatedapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "solhint 'contracts/**/*.sol'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "@vitejs/plugin-react": "^4.6.0",
+    "hardhat": "^2.25.0",
+    "solhint": "^6.0.0",
+    "vite": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "framer-motion": "^12.23.0",
+    "unsplash-js": "^7.0.19"
+  }
+}
