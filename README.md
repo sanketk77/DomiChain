@@ -70,3 +70,74 @@ DomiChain-Clean/
 │   ├── src/
 │   │   ├── components/        # All reusable UI components
 │   │   ├── pages/             # Route-level
+
+
+🛠️ Getting Started Locally
+📦 Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/sanketk77/DomiChain.git
+cd DomiChain
+⚙️ Frontend Setup
+bash
+Copy
+Edit
+cd DomiChain-Clean/frontend
+npm install
+npm run dev
+Visit: http://localhost:5173 in your browser.
+
+🔨 Compile Smart Contracts (Optional)
+bash
+Copy
+Edit
+cd ../backend
+npm install
+npx hardhat compile
+🧾 Smart Contract Overview
+The RealEstate.sol smart contract enables:
+
+Adding new properties (buy/sell/rent/plot)
+
+Tracking property metadata
+
+Returning full property list to the UI
+
+Ownership verification via connected wallet
+
+🦊 MetaMask Integration
+🧠 Auto-detect and connect MetaMask wallet
+
+⛔ Block contract interactions when wallet is not connected
+
+✅ Shows current connected account
+
+Works on Sepolia or any Ethereum-compatible testnet
+
+🧪 Testing
+You can test smart contract logic locally using Hardhat and interact with deployed contracts on Sepolia testnet.
+
+📜 License
+This project is licensed under the MIT License – see the LICENSE file for details.
+
+🙋‍♂️ Author
+Sanket Kingaonkar
+🔗 GitHub
+
+yaml
+Copy
+Edit
+
+---
+
+### ✅ What to do next:
+
+1. Copy the above content into your `README.md` file.
+2. Make sure to replace the preview image if needed.
+3. Then push:
+
+```bash
+git add README.md
+git commit -m "Updated and polished README for DomiChain"
+git push origin main
