@@ -17,6 +17,7 @@ Buy, Sell, Rent, or List property plots securely on the Ethereum Blockchain.
 ## 📸 Live Preview
 
 👉 [Click here to try the app](https://domi-chain.vercel.app)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dc97c7cc-f20a-40a0-bf99-ed6135fa3345" />
 
 ---
 
