@@ -6,7 +6,7 @@
 
 Buy, Sell, Rent, or List property plots securely on the Ethereum Blockchain.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://domi-chain.vercel.app)
+[![Live Demo]([https://img.shields.io/badge/Live-Demo-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://domi-chain.vercel.app](https://domi-chain.vercel.app/))
 [![GitHub Stars](https://img.shields.io/github/stars/sanketk77/DomiChain?style=for-the-badge)](https://github.com/sanketk77/DomiChain/stargazers)
 [![License](https://img.shields.io/github/license/sanketk77/DomiChain?style=for-the-badge)](./LICENSE)
 
