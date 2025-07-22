@@ -6,7 +6,9 @@
 
 Buy, Sell, Rent, or List property plots securely on the Ethereum Blockchain.
 
-[![Live Demo]([https://img.shields.io/badge/Live-Demo-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://domi-chain.vercel.app](https://domi-chain.vercel.app/))
+<br/>
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://domi-chain.vercel.app)
 [![GitHub Stars](https://img.shields.io/github/stars/sanketk77/DomiChain?style=for-the-badge)](https://github.com/sanketk77/DomiChain/stargazers)
 [![License](https://img.shields.io/github/license/sanketk77/DomiChain?style=for-the-badge)](./LICENSE)
 
@@ -16,8 +18,9 @@ Buy, Sell, Rent, or List property plots securely on the Ethereum Blockchain.
 
 ## 📸 Live Preview
 
-👉 [Click here to try the app](https://domi-chain.vercel.app)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dc97c7cc-f20a-40a0-bf99-ed6135fa3345" />
+👉 **[Click here to try the app](https://domi-chain.vercel.app)**
+
+<img src="https://github.com/user-attachments/assets/dc97c7cc-f20a-40a0-bf99-ed6135fa3345" alt="DomiChain Preview" width="100%" />
 
 ---
 
@@ -66,12 +69,4 @@ DomiChain-Clean/
 ├── frontend/                  # React + Tailwind frontend
 │   ├── src/
 │   │   ├── components/        # All reusable UI components
-│   │   ├── pages/             # Route-level pages (Home, Create, Details)
-│   │   ├── constants/         # Contract ABI and address
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── public/                # Public assets
-│
-├── .gitignore
-├── README.md
-└── package.json
+│   │   ├── pages/             # Route-level
