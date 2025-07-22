@@ -1,11 +1,10 @@
-// src/pages/Home.jsx
-
 import { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
 import { motion } from "framer-motion";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../constants";
 import PropertyCard from "../components/PropertyCard";
 import PropertyForm from "../components/PropertyForm";
+import demoProperties from "../data/addDemoProperties"; // Ensure this file exists and exports an array
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,25 +47,27 @@ export default function Home() {
       const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
 
       const properties = await contract.getAllProperties();
+      const address = await signer.getAddress();
 
-     const address = await signer.getAddress();
+      if (!properties || properties.length === 0) {
+        setPropertyList(demoProperties); // fallback to static data
+        return;
+      }
 
-const formatted = properties.map((p, i) => ({
-  id: i,
-  name: p.name,
-  city: p.city,
-  price: p.price,
-  image: p.imageUrl || "https://via.placeholder.com/400x250?text=House",
-  description: p.description,
-  owner: p.owner || address,
-}));
-
-
-
+      const formatted = properties.map((p, i) => ({
+        id: i,
+        name: p.name,
+        city: p.city,
+        price: p.price,
+        image: p.imageUrl || "https://via.placeholder.com/400x250?text=House",
+        description: p.description,
+        owner: p.owner || address,
+      }));
 
       setPropertyList(formatted);
     } catch (error) {
       console.error("Blockchain fetch error:", error);
+      setPropertyList(demoProperties); // fallback on error
     } finally {
       setLoading(false);
     }
@@ -83,7 +84,6 @@ const formatted = properties.map((p, i) => ({
 
   return (
     <div className="w-full min-h-screen bg-offwhite px-4 sm:px-10 lg:px-20 py-10">
-      {/* Header Section */}
       <motion.section
         className="text-center mb-12"
         initial="hidden"
@@ -104,13 +104,11 @@ const formatted = properties.map((p, i) => ({
         </motion.p>
       </motion.section>
 
-      {/* Add Property Section */}
       <section className="bg-white border border-gold-light shadow-md rounded-xl p-6 sm:p-10 mb-12">
         <h2 className="text-2xl font-bold text-gold mb-4">📝 Add a New Property</h2>
         <PropertyForm onPropertyAdded={fetchProperties} />
       </section>
 
-      {/* Search */}
       <div className="flex justify-center mb-8">
         <input
           type="text"
@@ -121,7 +119,6 @@ const formatted = properties.map((p, i) => ({
         />
       </div>
 
-      {/* Listed Properties */}
       <div>
         <h2 className="text-2xl font-bold text-gold mb-4">📍 Listed Properties</h2>
 
@@ -144,7 +141,6 @@ const formatted = properties.map((p, i) => ({
           <p className="text-gray-600">No matching properties found.</p>
         )}
 
-        {/* Buttons */}
         {filteredProperties.length > visibleCount && (
           <motion.div
             initial={{ opacity: 0 }}

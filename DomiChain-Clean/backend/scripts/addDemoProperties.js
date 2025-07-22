@@ -2,6 +2,8 @@ require("dotenv").config();
 const { ethers } = require("hardhat");
 
 // PropertyType Enum Mapping
+
+
 const PROPERTY_TYPES = {
   BUY: 0,
   SELL: 1,
@@ -10,194 +12,175 @@ const PROPERTY_TYPES = {
 };
 
 const demoProperties = [
-  // BUY (5)
+  // --- BUY ---
   {
-    name: "Skyline Apartments",
+    name: "Palm Breeze Villa",
     city: "Mumbai",
-    price: "₹3.2 Cr",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 3BHK sea-facing apartment in Bandra with balcony views.",
+    price: "₹3.5 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    description: "Sea-facing 4BHK villa in South Mumbai.",
     type: PROPERTY_TYPES.BUY,
   },
   {
-    name: "Green Horizon Villas",
-    city: "Pune",
-    price: "₹2.7 Cr",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Premium villa in Koregaon Park, Pune with garden space.",
-    type: PROPERTY_TYPES.BUY,
-  },
-  {
-    name: "Luxury Sky Tower",
-    city: "Delhi",
-    price: "₹4 Cr",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 4BHK penthouse in South Delhi, fully furnished.",
-    type: PROPERTY_TYPES.BUY,
-  },
-  {
-    name: "Urban Nest",
+    name: "Emerald Heights",
     city: "Bangalore",
-    price: "₹3 Cr",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Smart 3BHK flat in Whitefield, Bangalore.",
+    price: "₹2.8 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1572120360610-d971b9b78825",
+    description: "Modern luxury apartment in Indiranagar.",
     type: PROPERTY_TYPES.BUY,
   },
   {
-    name: "Kochi Waterfront Villa",
-    city: "Kochi",
-    price: "₹2.3 Cr",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 2-story villa facing Kochi backwaters.",
+    name: "Golden Meadows",
+    city: "Delhi",
+    price: "₹4.2 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914",
+    description: "Luxurious 5BHK farmhouse near Chattarpur.",
     type: PROPERTY_TYPES.BUY,
   },
-
-  // SELL (5)
   {
-    name: "Pink City Mansion",
-    city: "Jaipur",
-    price: "₹1.9 Cr",
-  imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Historic 5BHK haveli-style home in central Jaipur.",
-    type: PROPERTY_TYPES.SELL,
-  },
-  {
-    name: "Cyber Heights",
-    city: "Hyderabad",
-    price: "₹2.75 Cr",
-  imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ High-rise 3BHK in Gachibowli tech zone.",
-    type: PROPERTY_TYPES.SELL,
-  },
-  {
-    name: "Riverfront Bungalow",
-    city: "Surat",
-    price: "₹1.8 Cr",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Independent 4BHK bungalow on Tapi riverbank.",
-    type: PROPERTY_TYPES.SELL,
-  },
-  {
-    name: "Indore Skyline View",
-    city: "Indore",
-    price: "₹1.65 Cr",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ City view 2BHK near Vijay Nagar.",
-    type: PROPERTY_TYPES.SELL,
-  },
-  {
-    name: "Lakefront House",
-    city: "Bhopal",
+    name: "Urban Pearl",
+    city: "Pune",
     price: "₹2.1 Cr",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
+    imageUrl: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    description: "Premium 3BHK apartment in Baner.",
+    type: PROPERTY_TYPES.BUY,
+  },
+  {
+    name: "Hillview Residence",
+    city: "Shimla",
+    price: "₹1.8 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1586105251261-72a756497a12",
+    description: "3BHK hillside bungalow with scenic views.",
+    type: PROPERTY_TYPES.BUY,
+  },
 
-    description: "⚠️ Villa facing Upper Lake in Bhopal.",
+  // --- SELL ---
+  {
+    name: "Royal Enclave",
+    city: "Jaipur",
+    price: "₹2.3 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1554995207-c18c203602cb",
+    description: "Classic haveli-style home near city palace.",
+    type: PROPERTY_TYPES.SELL,
+  },
+  {
+    name: "Skyline Tower",
+    city: "Hyderabad",
+    price: "₹3.1 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    description: "4BHK high-rise apartment in HiTech City.",
+    type: PROPERTY_TYPES.SELL,
+  },
+  {
+    name: "Lakewood Estate",
+    city: "Bhopal",
+    price: "₹1.9 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914",
+    description: "Lakefront independent house near Upper Lake.",
+    type: PROPERTY_TYPES.SELL,
+  },
+  {
+    name: "Maple Gardens",
+    city: "Lucknow",
+    price: "₹1.6 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    description: "3BHK villa with private garden in Gomti Nagar.",
+    type: PROPERTY_TYPES.SELL,
+  },
+  {
+    name: "Riverstone Villa",
+    city: "Surat",
+    price: "₹2.0 Cr",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    description: "Premium 4BHK house near Tapi river.",
     type: PROPERTY_TYPES.SELL,
   },
 
-  // RENT (5)
+  // --- RENT ---
   {
-    name: "Beachside Studio",
+    name: "Studio Luxe",
     city: "Chennai",
     price: "₹35,000/month",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 1BHK rental near Marina Beach, Chennai.",
+    imageUrl: "https://images.unsplash.com/photo-1598928506311-c55dedb8aa0e",
+    description: "Stylish 1BHK studio near Marina Beach.",
     type: PROPERTY_TYPES.RENT,
   },
   {
-    name: "Smart Flat",
-    city: "Chandigarh",
-    price: "₹28,000/month",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Fully furnished 2BHK near Sukhna Lake.",
-    type: PROPERTY_TYPES.RENT,
-  },
-  {
-    name: "Goa Retreat Home",
-    city: "Goa",
-    price: "₹60,000/month",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Rentable villa in Candolim, perfect for beach lovers.",
-    type: PROPERTY_TYPES.RENT,
-  },
-  {
-    name: "Metro Studio",
+    name: "Central Flat",
     city: "Nagpur",
-    price: "₹20,000/month",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Compact and modern studio in central Nagpur.",
-    type: PROPERTY_TYPES.RENT,
-  },
-  {
-    name: "Lucknow City View",
-    city: "Lucknow",
     price: "₹22,000/month",
- imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 2BHK with balcony in Gomti Nagar.",
+    imageUrl: "https://images.unsplash.com/photo-1572120360610-d971b9b78825",
+    description: "Compact 2BHK near Sitabuldi Metro.",
+    type: PROPERTY_TYPES.RENT,
+  },
+  {
+    name: "Goa Holiday Home",
+    city: "Goa",
+    price: "₹45,000/month",
+    imageUrl: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    description: "2BHK villa with private pool in Calangute.",
+    type: PROPERTY_TYPES.RENT,
+  },
+  {
+    name: "Smart City Pad",
+    city: "Ahmedabad",
+    price: "₹25,000/month",
+    imageUrl: "https://images.unsplash.com/photo-1586105251261-72a756497a12",
+    description: "Smart-enabled 2BHK near SG Highway.",
+    type: PROPERTY_TYPES.RENT,
+  },
+  {
+    name: "Udaipur Hillside Flat",
+    city: "Udaipur",
+    price: "₹30,000/month",
+    imageUrl: "https://images.unsplash.com/photo-1598928506311-c55dedb8aa0e",
+    description: "Beautiful apartment with Aravalli views.",
     type: PROPERTY_TYPES.RENT,
   },
 
-  // PLOT (5)
+  // --- PLOT ---
   {
-    name: "Nashik Farm Plot",
+    name: "Green Acres Plot",
     city: "Nashik",
-    price: "₹60 Lakh",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Agricultural plot near Sinnar highway.",
+    price: "₹55 Lakh",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    description: "Residential plot near Gangapur Road.",
     type: PROPERTY_TYPES.PLOT,
   },
   {
-    name: "Raipur Residential Plot",
+    name: "Sunset Fields",
     city: "Raipur",
-    price: "₹45 Lakh",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 2000 sq.ft. residential plot in Avanti Vihar.",
+    price: "₹40 Lakh",
+    imageUrl: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914",
+    description: "Open plot in developing residential zone.",
     type: PROPERTY_TYPES.PLOT,
   },
   {
-    name: "Mysore Green Plot",
+    name: "Mysore Retreat Plot",
     city: "Mysore",
-    price: "₹80 Lakh",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ 3000 sq.ft plot near Chamundi Hills.",
+    price: "₹75 Lakh",
+    imageUrl: "https://images.unsplash.com/photo-1586105251261-72a756497a12",
+    description: "Ideal plot for villa near Chamundi Hills.",
     type: PROPERTY_TYPES.PLOT,
   },
   {
-    name: "Varanasi Ganga View Plot",
+    name: "Ganga View Land",
     city: "Varanasi",
-    price: "₹90 Lakh",
-   imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Plot with partial view of Ganges river.",
+    price: "₹95 Lakh",
+    imageUrl: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    description: "Plot with Ganga-facing panoramic view.",
     type: PROPERTY_TYPES.PLOT,
   },
   {
-    name: "Ranchi City Plot",
+    name: "Ranchi Meadows",
     city: "Ranchi",
-    price: "₹50 Lakh",
-    imageUrl: `https://source.unsplash.com/400x250/?villa,${p.city.toLowerCase()}`,
-
-    description: "⚠️ Open plot near Hatia Railway Station.",
+    price: "₹48 Lakh",
+    imageUrl: "https://images.unsplash.com/photo-1598928506311-c55dedb8aa0e",
+    description: "Plot near Hatia Airport, fully fenced.",
     type: PROPERTY_TYPES.PLOT,
   },
 ];
+
 
 async function main() {
   const contractAddress = process.env.CONTRACT_ADDRESS || "0x6b1aBFc124b4Ac379F16Dd5792D81732fbB2F0Ed";
